@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>متجر الملابس الجزائري - تشكيلة فريدة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #1e1e2a;
+            line-height: 1.5;
+        }
+
+        /* header & navbar */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e3c72, #2b4c8a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e66;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #e67e22;
+        }
+        .cart-icon {
+            background: #1e3c72;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: default;
+        }
+
+        /* hero section */
+        .hero {
+            background: linear-gradient(135deg, #fef9e8 0%, #fff4e6 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #1e2a3e;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* products grid */
+        .products-section {
+            max-width: 1300px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-right: 6px solid #e67e22;
+            padding-right: 1rem;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        .product-img {
+            width: 100%;
+            height: 300px;
+            background: #eef2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #2c5282;
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            color: #e67e22;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+        .product-desc {
+            color: #4a5568;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+        .order-btn {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            width: 100%;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+        }
+        .order-btn:hover {
+            background: #e67e22;
+            transform: scale(0.98);
+        }
+
+        /* footer */
+        footer {
+            background: #1e2a3e;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">🇩🇿 ALGÉRIEN T-SHIRT</div>
+        <ul class="nav-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#products">المنتجات</a></li>
+            <li><a href="#">تواصل</a></li>
+        </ul>
+        <div class="cart-icon">📦 اطلب مباشرة</div>
+    </div>
+</header>
+
+<div class="hero">
+    <h1>أرقى التيشيرتات الجزائرية</h1>
+    <p>جودة عالية – تصميمات حصرية – شحن سريع لكل الولايات</p>
+</div>
+
+<div class="products-section" id="products">
+    <h2 class="section-title">🔥 تشكيلتنا الأكثر مبيعاً</h2>
+    <div class="products-grid" id="products-grid">
+        <!-- سيتم إضافة المنتجات بواسطة JavaScript -->
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 المتجر الجزائري للملابس | اطلب عبر النموذج وسنوافيك بالتفاصيل</p>
+</footer>
+
+<script>
+    // قائمة المنتجات (يمكنك تعديلها أو إضافتها)
+    const products = [
+        {
+            id: 1,
+            name: "تيشيرت الأسد الأبيض",
+            price: "2500 دج",
+            desc: "قطن 100%، طباعة عالية الجودة، مقاسات من S إلى XXL",
+            emoji: "🦁"
+        },
+        {
+            id: 2,
+            name: "طماق الكوماندوس",
+            price: "3200 دج",
+            desc: "تصميم جزائري مميز، خامة مريحة للصيف",
+            emoji: "ⵣ"
+        },
+        {
+            id: 3,
+            name: "تيشيرت نخلة الجزائر",
+            price: "2800 دج",
+            desc: "نقشة النخلة والصحراء، أنيق وكاجوال",
+            emoji: "🌴"
+        },
+        {
+            id: 4,
+            name: "هودي الرياضة",
+            price: "4500 دج",
+            desc: "هودي بسحاب، جيب أمامي، ألوان محايدة",
+            emoji: "🏋️"
+        },
+        {
+            id: 5,
+            name: "تيشيرت الخط المغاربي",
+            price: "2700 دج",
+            desc: "كتابة تقليدية، فخم وجذاب",
+            emoji: "✍️"
+        },
+        {
+            id: 6,
+            name: "كاب بيسبول",
+            price: "1500 دج",
+            desc: "قابل للتعديل، خامة قطنية ممتازة",
+            emoji: "🧢"
+        }
+    ];
+
+    const productsGrid = document.getElementById('products-grid');
+
+    function renderProducts() {
+        productsGrid.innerHTML = '';
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-img">${product.emoji} 👕</div>
+                <div class="product-info">
+                    <div class="product-title">${product.name}</div>
+                    <div class="product-price">${product.price}</div>
+                    <div class="product-desc">${product.desc}</div>
+                    <button class="order-btn" data-product="${product.name}">📦 اطلب الآن</button>
+                </div>
+            `;
+            productsGrid.appendChild(card);
+        });
+
+        // إضافة حدث الضغط على كل زر طلب
+        document.querySelectorAll('.order-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const productName = btn.getAttribute('data-product');
+                openGoogleForm(productName);
+            });
+        });
+    }
+
+    function openGoogleForm(productName) {
+        // رابط النموذج الذي أرسلته (مع إضافة حقل المنتج تلقائياً)
+        const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdWbFEz4Mt72fbEH0fC7q2vasWhfnK4BH6GlfABFWFY1ZY3Qw/viewform";
+        // يمكنك إضافة product كمعامل في عنوان URL لملء حقل معين إذا كان النموذج يدعم prefilled
+        // لكن في حالتنا سنفتح الرابط فقط ونضيف تلميح للعميل بكتابة اسم المنتج يدوياً
+        const confirmMsg = `🛒 هل تريد طلب "${productName}"؟\nسيتم فتح نموذج الطلب. الرجاء كتابة اسم المنتج في الحقل الأول.\n(يمكنك نسخ الاسم: ${productName})`;
+        if (confirm(confirmMsg)) {
+            window.open(baseUrl, '_blank');
+        }
+    }
+
+    renderProducts();
+</script>
+
+</body>
+</html>

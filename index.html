@@ -2,627 +2,1063 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>متجر الملابس الجزائري - تشكيلة فريدة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BERBÈRE | متجر الملابس الجزائري</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+        :root {
+            --ink:       #0d0f1a;
+            --deep:      #111422;
+            --surface:   #181c30;
+            --card:      #1e2338;
+            --gold:      #c9963a;
+            --gold-lt:   #e8b85a;
+            --gold-pale: #f5dfa0;
+            --sand:      #e8d5a3;
+            --cream:     #fdf6e3;
+            --accent:    #c9963a;
+            --border:    rgba(201,150,58,0.18);
+            --text-main: #f0e8d0;
+            --text-muted:#9a8f7a;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 28px;
+            --radius-xl: 40px;
+            --shadow-card: 0 20px 60px rgba(0,0,0,0.5);
+            --font-ar: 'Cairo', sans-serif;
+            --font-display: 'Scheherazade New', serif;
         }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            background: #f5f5f5;
-            color: #1e1e2a;
-            line-height: 1.5;
-            position: relative;
+            font-family: var(--font-ar);
+            background: var(--ink);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* خلفية الموقع عالية الجودة - الصورة الأولى */
+        /* ═══════════ BACKGROUND PATTERN ═══════════ */
         body::before {
-            content: "";
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(201,150,58,0.06) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(201,150,58,0.04) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='rgba(201,150,58,0.04)' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='3' fill='none' stroke='rgba(201,150,58,0.06)' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: cover, cover, 60px 60px;
+            pointer-events: none;
         }
 
-        /* طبقة شفافة فوق الخلفية لتفتيحها وإبراز المحتوى */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: rgba(255, 255, 255, 0.88);
-        }
-
+        /* ═══════════ HEADER ═══════════ */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
+            z-index: 200;
+            background: rgba(13,15,26,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
-        .nav-container {
+
+        .nav-wrap {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0 2rem;
+            height: 72px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        /* ═══ LOGO ═══ */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .logo-emblem {
+            width: 46px;
+            height: 46px;
+            flex-shrink: 0;
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .logo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .logo-sub {
+            font-family: var(--font-ar);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; right: 0;
+            width: 0; height: 1.5px;
+            background: var(--gold);
+            transition: width 0.25s;
+        }
+        nav a:hover { color: var(--gold); }
+        nav a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+            color: var(--ink);
+            padding: 0.55rem 1.4rem;
+            border-radius: var(--radius-xl);
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(201,150,58,0.35);
+            white-space: nowrap;
+        }
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 28px rgba(201,150,58,0.5);
+        }
+
+        /* ═══════════ HERO ═══════════ */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center 30%;
+            filter: brightness(0.18) saturate(0.7);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                rgba(13,15,26,0.2) 0%,
+                rgba(13,15,26,0.0) 40%,
+                rgba(13,15,26,0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201,150,58,0.12);
+            border: 1px solid rgba(201,150,58,0.35);
+            color: var(--gold-lt);
+            padding: 0.4rem 1.1rem;
+            border-radius: var(--radius-xl);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--cream);
+            margin-bottom: 1.2rem;
+            animation: fadeUp 0.8s 0.15s ease both;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--sand);
+            font-weight: 400;
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            animation: fadeUp 0.8s 0.3s ease both;
+            opacity: 0.85;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 0.8s 0.45s ease both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+            color: var(--ink);
+            padding: 0.9rem 2.2rem;
+            border-radius: var(--radius-xl);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 30px rgba(201,150,58,0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(201,150,58,0.55);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--sand);
+            padding: 0.9rem 2.2rem;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1px solid rgba(232,213,163,0.3);
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+            animation: fadeUp 0.8s 0.6s ease both;
+        }
+        .stat { text-align: center; }
+        .stat-num {
+            display: block;
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: -1px;
+        }
+        .stat-lbl {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ═══════════ SECTION ═══════════ */
+        .section-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e3c72, #2b4c8a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #2c3e66;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        .nav-links a:hover {
-            color: #e67e22;
-        }
-        .cart-icon {
-            background: #1e3c72;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            cursor: default;
-        }
 
-        .hero {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(238, 238, 238, 0.5);
-            border-radius: 0 0 30px 30px;
-            margin: 0 1rem;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #1e2a3e;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            color: #4a5568;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .products-section {
-            max-width: 1300px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-right: 6px solid #e67e22;
-            padding-right: 1rem;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .product-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-            backdrop-filter: blur(5px);
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
-            background: white;
-        }
-        .product-img {
-            width: 100%;
-            height: 300px;
-            background: #eef2f5;
+        .section-label {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1.25;
+        }
+
+        /* ═══════════ PRODUCTS GRID ═══════════ */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .product-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
             overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            cursor: pointer;
             position: relative;
         }
-        .product-img img {
+        .product-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(201,150,58,0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,150,58,0.3);
+            border-color: rgba(201,150,58,0.4);
+        }
+        .product-card:hover::before { opacity: 1; }
+
+        .product-img-wrap {
+            position: relative;
+            height: 310px;
+            overflow: hidden;
+            background: var(--surface);
+        }
+        .product-img-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
-        .product-card:hover .product-img img {
-            transform: scale(1.05);
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.06);
         }
-        .product-info {
+
+        .product-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+            color: var(--ink);
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .product-body {
             padding: 1.5rem;
         }
-        .product-title {
-            font-size: 1.4rem;
+        .product-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .product-price {
-            color: #e67e22;
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin: 0.5rem 0;
+            color: var(--cream);
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
         }
         .product-desc {
-            color: #4a5568;
-            margin: 0.75rem 0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.1rem;
+        }
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product-price {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: -0.5px;
+        }
+        .product-price span {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-muted);
         }
         .order-btn {
-            background: #1e3c72;
-            color: white;
+            background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+            color: var(--ink);
             border: none;
-            padding: 0.8rem 1rem;
-            width: 100%;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 1rem;
+            padding: 0.6rem 1.3rem;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-ar);
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: 0.2s;
-            margin-top: 0.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(201,150,58,0.3);
         }
         .order-btn:hover {
-            background: #e67e22;
-            transform: scale(0.98);
+            transform: scale(1.04);
+            box-shadow: 0 6px 24px rgba(201,150,58,0.5);
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: white;
-            border-radius: 28px;
-            max-width: 500px;
-            width: 90%;
-            padding: 2rem;
-            position: relative;
-            animation: modalFadeIn 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #666;
-            transition: 0.2s;
-        }
-        .close-modal:hover {
-            color: #e67e22;
-        }
-        .modal h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #1e3c72;
-        }
-        .modal .product-name-display {
-            background: #f0f4f8;
-            padding: 0.8rem;
-            border-radius: 16px;
-            margin: 1rem 0;
-            font-weight: bold;
-            color: #e67e22;
-        }
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e66;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            font-size: 1rem;
-            transition: 0.2s;
-        }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #e67e22;
-        }
-        .submit-order {
-            background: #e67e22;
-            color: white;
-            border: none;
-            padding: 1rem;
-            width: 100%;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 1rem;
-        }
-        .submit-order:hover {
-            background: #1e3c72;
-        }
-        .success-msg {
-            background: #27ae60;
-            color: white;
-            padding: 0.8rem;
-            border-radius: 16px;
-            margin-top: 1rem;
+        /* ═══════════ DIVIDER ═══════════ */
+        .ornament-divider {
             text-align: center;
-            display: none;
-        }
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        footer {
-            background: #1e2a3e;
-            color: #ccc;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 1.5rem 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+            opacity: 0.5;
             position: relative;
             z-index: 1;
         }
+        .ornament-divider::before,
+        .ornament-divider::after {
+            content: '';
+            display: inline-block;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+            vertical-align: middle;
+            margin: 0 1rem;
+        }
+        .ornament-divider::after {
+            background: linear-gradient(to left, transparent, var(--gold));
+        }
 
-        @media (max-width: 700px) {
-            .nav-container {
-                flex-direction: column;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .product-img {
-                height: 250px;
-            }
+        /* ═══════════ FEATURES ═══════════ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .feature-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.8rem 1.4rem;
+            text-align: center;
+            transition: border-color 0.25s;
+        }
+        .feature-item:hover { border-color: rgba(201,150,58,0.4); }
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .feature-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--cream);
+            margin-bottom: 0.4rem;
+        }
+        .feature-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════ MODAL ═══════════ */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 500;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-backdrop.open { display: flex; }
+
+        .modal-box {
+            background: var(--deep);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 520px;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalIn 0.35s cubic-bezier(.22,.68,0,1.2) both;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(24px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-header {
+            padding: 1.8rem 2rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+        }
+        .modal-close {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .modal-close:hover { color: var(--gold); border-color: var(--gold); }
+
+        .product-pill {
+            margin: 0 2rem 1.5rem;
+            background: rgba(201,150,58,0.1);
+            border: 1px solid rgba(201,150,58,0.25);
+            border-radius: var(--radius-md);
+            padding: 0.8rem 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product-pill-name {
+            font-weight: 700;
+            color: var(--gold-lt);
+            font-size: 0.95rem;
+        }
+        .product-pill-price {
+            font-weight: 900;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .modal-form { padding: 0 2rem 2rem; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .form-group { margin-bottom: 1.1rem; }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid rgba(201,150,58,0.15);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            font-family: var(--font-ar);
+            font-size: 0.92rem;
+            color: var(--text-main);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--text-muted); opacity: 0.6; }
+        .form-group select option { background: var(--deep); }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201,150,58,0.12);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+            border: none;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-ar);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--ink);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 28px rgba(201,150,58,0.4);
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 36px rgba(201,150,58,0.55);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-banner {
+            display: none;
+            background: rgba(39,174,96,0.12);
+            border: 1px solid rgba(39,174,96,0.35);
+            border-radius: var(--radius-md);
+            color: #6fe89b;
+            padding: 1rem 1.2rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 1rem;
+            line-height: 1.7;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 18px; height: 18px;
+            border: 2px solid rgba(13,15,26,0.3);
+            border-top-color: var(--ink);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ═══════════ FOOTER ═══════════ */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: var(--deep);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+        }
+        .footer-tagline {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        /* ═══════════ ANIMATIONS ═══════════ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════ SCROLLBAR ═══════════ */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--ink); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+        /* ═══════════ RESPONSIVE ═══════════ */
+        @media (max-width: 768px) {
+            .nav-wrap { padding: 0 1rem; }
+            nav ul { display: none; }
+            .hero-stats { gap: 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .modal-header, .product-pill, .modal-form { padding-left: 1.2rem; padding-right: 1.2rem; }
+        }
+        @media (max-width: 480px) {
+            .products-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+<!-- ═══ HEADER ═══ -->
 <header>
-    <div class="nav-container">
-        <div class="logo">🇩🇿 ALGÉRIEN T-SHIRT</div>
-        <ul class="nav-links">
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#products">المنتجات</a></li>
-            <li><a href="#">تواصل</a></li>
-        </ul>
-        <div class="cart-icon">📦 اطلب مباشرة</div>
+    <div class="nav-wrap">
+        <a href="#" class="logo">
+            <!-- SVG Logo Emblem -->
+            <svg class="logo-emblem" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="23,3 43,12 43,34 23,43 3,34 3,12" fill="none" stroke="#c9963a" stroke-width="1.2"/>
+                <polygon points="23,8 38,15 38,31 23,38 8,31 8,15" fill="none" stroke="#c9963a" stroke-width="0.6" opacity="0.4"/>
+                <text x="23" y="27" text-anchor="middle" font-family="Scheherazade New, serif" font-size="13" font-weight="700" fill="#c9963a">ب</text>
+                <circle cx="23" cy="23" r="3" fill="#c9963a" opacity="0.25"/>
+            </svg>
+            <div class="logo-text">
+                <span class="logo-name">BERBÈRE</span>
+                <span class="logo-sub">Algerian Wear — الجزائر</span>
+            </div>
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#products">التشكيلة</a></li>
+                <li><a href="#features">لماذا نحن</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+        </nav>
+
+        <a href="#products" class="nav-cta">اطلب الآن</a>
     </div>
 </header>
 
-<div class="hero">
-    <h1>أرقى التيشيرتات الجزائرية</h1>
-    <p>جودة عالية – تصميمات حصرية – شحن سريع لكل الولايات</p>
-</div>
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            ✦ &nbsp; تشكيلة 2025 &nbsp; ✦
+        </div>
+        <h1>أرقى <span>التيشيرتات</span><br>الجزائرية</h1>
+        <p class="hero-desc">
+            قطن فاخر · تصميمات حصرية · شحن سريع لكل الولايات الثماني والأربعين
+        </p>
+        <div class="hero-actions">
+            <a href="#products" class="btn-primary">اكتشف التشكيلة</a>
+            <a href="#features" class="btn-ghost">لماذا BERBÈRE ؟</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-num"></span>
+                <span class="stat-lbl"></span>
+            </div>
+            <div class="stat">
+                <span class="stat-num"></span>
+                <span class="stat-lbl"></span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">مرحبا بكم</span>
+                <span class="stat-lbl"></span>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="products-section" id="products">
-    <h2 class="section-title">🔥 تشكيلتنا الأكثر مبيعاً</h2>
+<!-- ═══ PRODUCTS ═══ -->
+<div class="section-wrap" id="products">
+    <div class="section-header">
+        <div>
+            <div class="section-label">✦ أبرز المنتجات</div>
+            <h2 class="section-title">التشكيلة الأكثر طلباً</h2>
+        </div>
+    </div>
     <div class="products-grid" id="products-grid"></div>
 </div>
 
+<!-- ═══ DIVIDER ═══ -->
+<div class="ornament-divider">✦ ✧ ✦</div>
+
+<!-- ═══ FEATURES ═══ -->
+<div class="section-wrap" id="features">
+    <div class="section-header">
+        <div>
+            <div class="section-label">✦ مزايانا</div>
+            <h2 class="section-title">لماذا تختار BERBÈRE ؟</h2>
+        </div>
+    </div>
+    <div class="features-grid">
+        <div class="feature-item">
+            <div class="feature-icon">🧵</div>
+            <div class="feature-title">قطن 100% فاخر</div>
+            <div class="feature-desc">خامات عالية الجودة مريحة في الصيف والشتاء</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <div class="feature-title">تصميمات حصرية</div>
+            <div class="feature-desc">نقوش جزائرية أصيلة لا تجدها في أي مكان آخر</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <div class="feature-title">شحن لكل الولايات</div>
+            <div class="feature-desc">توصيل سريع خلال 24 إلى 48 ساعة من تأكيد الطلب</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🔄</div>
+            <div class="feature-title">ضمان الاستبدال</div>
+            <div class="feature-desc">استبدال مجاني إذا لم يناسبك المقاس</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
 <footer>
-    <p>© 2025 المتجر الجزائري للملابس | اطلب عبر النموذج وسنوافيك بالتفاصيل</p>
+    <div class="footer-logo">BERBÈRE</div>
+    <p class="footer-tagline">أصالة جزائرية · جودة لا تُنافَس</p>
+    <p class="footer-copy">© 2025 متجر BERBÈRE الجزائري للملابس — اطلب عبر النموذج وسنوافيك بالتفاصيل</p>
 </footer>
 
-<div id="orderModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3>📋 طلب المنتج</h3>
-        <div class="product-name-display" id="modalProductName">المنتج</div>
-        
-        <form id="orderForm">
-            <div class="form-group">
-                <label>👤 الاسم الكامل</label>
-                <input type="text" id="fullName" required placeholder="أدخل اسمك الكامل">
-            </div>
-            <div class="form-group">
-                <label>📞 رقم الهاتف</label>
-                <input type="tel" id="phone" required placeholder="مثال: 0555123456">
-            </div>
-            <div class="form-group">
-                <label>📍 الولاية</label>
-                <select id="wilaya" required>
-                    <option value="">اختر الولاية</option>
-                    <option>أدرار</option><option>الشلف</option><option>الأغواط</option><option>أم البواقي</option>
-                    <option>باتنة</option><option>بجاية</option><option>بسكرة</option><option>بشار</option>
-                    <option>البليدة</option><option>البويرة</option><option>تمنراست</option><option>تبسة</option>
-                    <option>تلمسان</option><option>تيارت</option><option>تيزي وزو</option><option>الجزائر</option>
-                    <option>الجلفة</option><option>جيجل</option><option>سطيف</option><option>سعيدة</option>
-                    <option>سكيكدة</option><option>بلعباس</option><option>عنابة</option><option>قالمة</option>
-                    <option>قسنطينة</option><option>المدية</option><option>مستغانم</option><option>المسيلة</option>
-                    <option>معسكر</option><option>ورقلة</option><option>وهران</option><option>البيض</option>
-                    <option>إليزي</option><option>برج بوعريريج</option><option>بومرداس</option><option>الطارف</option>
-                    <option>تندوف</option><option>تيسمسيلت</option><option>الوادي</option><option>خنشلة</option>
-                    <option>سوق أهراس</option><option>تيبازة</option><option>ميلة</option><option>عين الدفلى</option>
-                    <option>النعامة</option><option>عين تيموشنت</option><option>غرداية</option><option>غليزان</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>🏠 العنوان الكامل</label>
-                <textarea id="address" rows="2" required placeholder="العنوان التفصيلي + الرمز البريدي"></textarea>
-            </div>
-            <div class="form-group">
-                <label>📏 المقاس</label>
-                <select id="size" required>
-                    <option value="">اختر المقاس</option>
-                    <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>💬 ملاحظات إضافية (اختياري)</label>
-                <textarea id="notes" rows="2" placeholder="أي طلبات خاصة..."></textarea>
-            </div>
-            <button type="submit" class="submit-order" id="submitBtn">✅ تأكيد الطلب</button>
-            <div id="successMsg" class="success-msg"></div>
-        </form>
+<!-- ═══ ORDER MODAL ═══ -->
+<div class="modal-backdrop" id="orderModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 class="modal-title">تأكيد الطلب</h3>
+            <button class="modal-close" id="closeModal">✕</button>
+        </div>
+
+        <div class="product-pill" id="modalProductPill">
+            <span class="product-pill-name" id="modalProductName">—</span>
+            <span class="product-pill-price" id="modalProductPrice">—</span>
+        </div>
+
+        <div class="modal-form">
+            <form id="orderForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>الاسم الكامل *</label>
+                        <input type="text" id="fullName" required placeholder="محمد بن علي">
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف *</label>
+                        <input type="tel" id="phone" required placeholder="0555 123 456">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>المقاس *</label>
+                        <select id="size" required>
+                            <option value="">اختر المقاس</option>
+                            <option>S</option><option>M</option><option>L</option>
+                            <option>XL</option><option>XXL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>الولاية *</label>
+                        <select id="wilaya" required>
+                            <option value="">اختر الولاية</option>
+                            <option>أدرار</option><option>الشلف</option><option>الأغواط</option><option>أم البواقي</option>
+                            <option>باتنة</option><option>بجاية</option><option>بسكرة</option><option>بشار</option>
+                            <option>البليدة</option><option>البويرة</option><option>تمنراست</option><option>تبسة</option>
+                            <option>تلمسان</option><option>تيارت</option><option>تيزي وزو</option><option>الجزائر</option>
+                            <option>الجلفة</option><option>جيجل</option><option>سطيف</option><option>سعيدة</option>
+                            <option>سكيكدة</option><option>بلعباس</option><option>عنابة</option><option>قالمة</option>
+                            <option>قسنطينة</option><option>المدية</option><option>مستغانم</option><option>المسيلة</option>
+                            <option>معسكر</option><option>ورقلة</option><option>وهران</option><option>البيض</option>
+                            <option>إليزي</option><option>برج بوعريريج</option><option>بومرداس</option><option>الطارف</option>
+                            <option>تندوف</option><option>تيسمسيلت</option><option>الوادي</option><option>خنشلة</option>
+                            <option>سوق أهراس</option><option>تيبازة</option><option>ميلة</option><option>عين الدفلى</option>
+                            <option>النعامة</option><option>عين تيموشنت</option><option>غرداية</option><option>غليزان</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>العنوان التفصيلي *</label>
+                    <textarea id="address" rows="2" required placeholder="الحي · الشارع · رقم البناية · الرمز البريدي"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات إضافية</label>
+                    <textarea id="notes" rows="2" placeholder="لون معين أو أي طلب خاص..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">تأكيد الطلب</button>
+                <div class="success-banner" id="successBanner"></div>
+            </form>
+        </div>
     </div>
 </div>
 
 <script>
-    // رابط Google Sheet الخاص بك
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwC-IozhGA_eP6n-Xu6ojigpsa6zzLGI5y0XZulWsJNde--uqu9vMqvYnAE3GtAlzgb/exec";
-    
-    const products = [
-        {
-            id: 1,
-            name: "تيشيرت الأسد الأبيض",
-            price: "2500 دج",
-            desc: "قطن 100%، طباعة عالية الجودة، مقاسات من S إلى XXL",
-            imageUrl: "https://b.top4top.io/p_38060w9on1.jpg"
-        },
-        {
-            id: 2,
-            name: "طماق الكوماندوس",
-            price: "3200 دج",
-            desc: "تصميم جزائري مميز، خامة مريحة للصيف",
-            imageUrl: "https://b.top4top.io/p_38060w9on1.jpg"
-        },
-        {
-            id: 3,
-            name: "تيشيرت نخلة الجزائر",
-            price: "2800 دج",
-            desc: "نقشة النخلة والصحراء، أنيق وكاجوال",
-            imageUrl: "https://b.top4top.io/p_38060w9on1.jpg"
-        },
-        {
-            id: 4,
-            name: "هودي الرياضة",
-            price: "4500 دج",
-            desc: "هودي بسحاب، جيب أمامي، ألوان محايدة",
-            imageUrl: "https://b.top4top.io/p_38060w9on1.jpg"
-        },
-        {
-            id: 5,
-            name: "تيشيرت الخط المغاربي",
-            price: "2700 دج",
-            desc: "كتابة تقليدية، فخم وجذاب",
-            imageUrl: "https://b.top4top.io/p_38060w9on1.jpg"
-        },
-        {
-            id: 6,
-            name: "كاب بيسبول",
-            price: "1500 دج",
-            desc: "قابل للتعديل، خامة قطنية ممتازة",
-            imageUrl: "https://b.top4top.io/p_38060w9on1.jpg"
-        }
-    ];
 
-    const productsGrid = document.getElementById('products-grid');
-    const modal = document.getElementById('orderModal');
-    const closeModalBtn = document.querySelector('.close-modal');
-    const modalProductNameSpan = document.getElementById('modalProductName');
-    const orderForm = document.getElementById('orderForm');
-    const successMsgDiv = document.getElementById('successMsg');
-    const submitBtn = document.getElementById('submitBtn');
+    const products = [
+        { id:1, name:"تيشيرت الأسد الأبيض",   price:"2500 دج", badge:"الأكثر مبيعاً", desc:"قطن 100%، طباعة عالية الجودة، مقاسات S حتى XXL", img:"https://b.top4top.io/p_38060w9on1.jpg" },
+        { id:2, name:"طماق الكوماندوس",        price:"3200 دج", badge:"",              desc:"تصميم جزائري مميز، خامة مريحة للصيف والنشاطات", img:"https://b.top4top.io/p_38060w9on1.jpg" },
+        { id:3, name:"تيشيرت نخلة الجزائر",   price:"2800 دج", badge:"جديد",          desc:"نقشة النخلة والصحراء، أنيق وكاجوال في آنٍ واحد", img:"https://b.top4top.io/p_38060w9on1.jpg" },
+        { id:4, name:"هودي الرياضة",           price:"4500 دج", badge:"",              desc:"هودي بسحاب، جيب أمامي واسع، ألوان محايدة متعددة", img:"https://b.top4top.io/p_38060w9on1.jpg" },
+        { id:5, name:"تيشيرت الخط المغاربي",  price:"2700 دج", badge:"حصري",          desc:"كتابة بالخط التقليدي، فخم وجذاب للحفلات والأسفار", img:"https://b.top4top.io/p_38060w9on1.jpg" },
+        { id:6, name:"كاب بيسبول",             price:"1500 دج", badge:"",              desc:"قابل للتعديل، خامة قطنية ممتازة، مناسب لجميع المناسبات", img:"https://b.top4top.io/p_38060w9on1.jpg" }
+    ];
 
     let currentProduct = null;
 
-    function renderProducts() {
-        productsGrid.innerHTML = '';
-        products.forEach(product => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <div class="product-img">
-                    <img src="${product.imageUrl}" alt="${product.name}" loading="lazy">
+    // Render products
+    const grid = document.getElementById('products-grid');
+    products.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <div class="product-img-wrap">
+                <img src="${p.img}" alt="${p.name}" loading="lazy">
+                ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+            </div>
+            <div class="product-body">
+                <div class="product-name">${p.name}</div>
+                <div class="product-desc">${p.desc}</div>
+                <div class="product-footer">
+                    <div class="product-price">${p.price} <span>شامل التوصيل</span></div>
+                    <button class="order-btn" data-id="${p.id}">اطلب الآن</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-title">${product.name}</div>
-                    <div class="product-price">${product.price}</div>
-                    <div class="product-desc">${product.desc}</div>
-                    <button class="order-btn" data-id="${product.id}">📦 اطلب الآن</button>
-                </div>
-            `;
-            productsGrid.appendChild(card);
-        });
+            </div>
+        `;
+        grid.appendChild(card);
+    });
 
-        document.querySelectorAll('.order-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const productId = parseInt(btn.getAttribute('data-id'));
-                const product = products.find(p => p.id === productId);
-                if (product) openOrderModal(product);
-            });
-        });
-    }
+    // Modal logic
+    const modal    = document.getElementById('orderModal');
+    const closeBtn = document.getElementById('closeModal');
+    const form     = document.getElementById('orderForm');
+    const submitBtn   = document.getElementById('submitBtn');
+    const successBanner = document.getElementById('successBanner');
 
-    function openOrderModal(product) {
+    function openModal(product) {
         currentProduct = product;
-        modalProductNameSpan.textContent = `${product.name} - ${product.price}`;
-        modal.style.display = 'flex';
-        orderForm.reset();
-        successMsgDiv.style.display = 'none';
-        successMsgDiv.innerHTML = '';
+        document.getElementById('modalProductName').textContent  = product.name;
+        document.getElementById('modalProductPrice').textContent = product.price;
+        modal.classList.add('open');
+        form.reset();
+        successBanner.style.display = 'none';
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '✅ تأكيد الطلب';
+        submitBtn.textContent = 'تأكيد الطلب';
+        document.body.style.overflow = 'hidden';
     }
-
     function closeModal() {
-        modal.style.display = 'none';
+        modal.classList.remove('open');
         currentProduct = null;
+        document.body.style.overflow = '';
     }
 
-    async function sendToGoogleSheet(orderData) {
+    document.querySelectorAll('.order-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+            const id = parseInt(btn.dataset.id);
+            const p = products.find(x => x.id === id);
+            if (p) openModal(p);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+    async function sendToSheet(data) {
         try {
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderData)
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(data)
             });
             return true;
-        } catch (error) {
-            console.error('خطأ في الإرسال:', error);
-            return false;
-        }
+        } catch(e) { return false; }
     }
 
-    async function handleOrderSubmit(event) {
-        event.preventDefault();
-        
-        if (!currentProduct) {
-            alert('حدث خطأ، يرجى المحاولة مرة أخرى.');
-            return;
-        }
-        
-        const fullName = document.getElementById('fullName').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const wilaya = document.getElementById('wilaya').value;
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!currentProduct) return;
+
+        const name    = document.getElementById('fullName').value.trim();
+        const phone   = document.getElementById('phone').value.trim();
+        const wilaya  = document.getElementById('wilaya').value;
         const address = document.getElementById('address').value.trim();
-        const size = document.getElementById('size').value;
-        const notes = document.getElementById('notes').value.trim();
-        
-        if (!fullName || !phone || !wilaya || !address || !size) {
-            alert('الرجاء تعبئة جميع الحقول المطلوبة (*)');
+        const size    = document.getElementById('size').value;
+        const notes   = document.getElementById('notes').value.trim();
+
+        if (!name || !phone || !wilaya || !address || !size) {
+            alert('الرجاء تعبئة جميع الحقول المطلوبة');
             return;
         }
-        
-        const phoneRegex = /^[0-9]{9,12}$/;
-        if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+        if (!/^[0-9]{9,12}$/.test(phone.replace(/\s/g,''))) {
             alert('رقم الهاتف يجب أن يحتوي على أرقام فقط (9 إلى 12 رقم)');
             return;
         }
-        
-        const orderData = {
+
+        const order = {
             product: currentProduct.name,
             price: currentProduct.price,
-            fullName: fullName,
-            phone: phone,
-            wilaya: wilaya,
-            address: address,
-            size: size,
-            notes: notes,
+            fullName: name, phone, wilaya, address, size, notes,
             orderDate: new Date().toLocaleString('ar-DZ'),
             status: 'جديد'
         };
-        
-        // حفظ في localStorage كنسخة احتياطية
-        let orders = JSON.parse(localStorage.getItem('algoshop_orders')) || [];
-        orders.push(orderData);
-        localStorage.setItem('algoshop_orders', JSON.stringify(orders));
-        
-        // إظهار حالة التحميل
+
+        let saved = JSON.parse(localStorage.getItem('berbere_orders') || '[]');
+        saved.push(order);
+        localStorage.setItem('berbere_orders', JSON.stringify(saved));
+
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="loading-spinner"></span> جاري الإرسال...';
-        
-        // إرسال إلى Google Sheet
-        const sent = await sendToGoogleSheet(orderData);
-        
+        submitBtn.innerHTML = 'جارٍ الإرسال <span class="spinner"></span>';
+
+        const sent = await sendToSheet(order);
+
         if (sent) {
-            successMsgDiv.style.display = 'block';
-            successMsgDiv.innerHTML = `✅ تم استلام طلبك بنجاح! <br> 📦 المنتج: ${currentProduct.name} <br> 📞 سنتصل بك قريباً على ${phone}`;
-            
-            setTimeout(() => {
-                closeModal();
-                alert('شكراً لك! تم تسجيل طلبك بنجاح. سيتم التواصل معك خلال 24 ساعة.');
-            }, 2500);
+            successBanner.style.display = 'block';
+            successBanner.innerHTML = `✅ تم استلام طلبك بنجاح!<br>📦 ${currentProduct.name}<br>📞 سنتصل بك على الرقم ${phone} خلال 24 ساعة`;
+            setTimeout(() => closeModal(), 3200);
         } else {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = '✅ تأكيد الطلب';
-            alert('حدث خطأ في إرسال الطلب. تم حفظه محلياً وسنقوم بمعالجته يدوياً. شكراً لك!');
+            submitBtn.textContent = 'تأكيد الطلب';
+            alert('تم حفظ طلبك محلياً وسنتواصل معك قريباً. شكراً!');
             closeModal();
         }
-    }
-    
-    closeModalBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) closeModal();
     });
-    
-    orderForm.addEventListener('submit', handleOrderSubmit);
-    renderProducts();
 </script>
-
 </body>
 </html>
